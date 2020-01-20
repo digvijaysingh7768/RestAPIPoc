@@ -10,19 +10,19 @@ namespace WebApplication3.Controllers
 {
     public class TeacherController : ApiController
     {
-        [Route("api/Teacher")]
+        [Route("api/Teacher/info")]
         public IHttpActionResult GetTeacher()
         {
-            IList<Teacher_View> tech = null;
+            IList<TeacherView> tech = null;
 
             using (var db = new TeacherEntities())
             {
-                tech = db.Teacher_Info.Select(s => new Teacher_View()
+                tech = db.Teacher_Info.Select(s => new TeacherView()
                 {
                     Id = s.Teacher_Id,
                     Name = s.Teacher_Name,
                     email = s.Teacher_Email
-                }).ToList<Teacher_View>();
+                }).ToList<TeacherView>();
             }
             if (tech.Count == 0)
             {              
@@ -32,8 +32,8 @@ namespace WebApplication3.Controllers
 
         }
 
-        [Route("api/Teacher")]
-        public IHttpActionResult PostTeacher(Teacher_View t)
+        [Route("api/Teacher/insert")]
+        public IHttpActionResult PostTeacher(TeacherView t)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Invalid Data.");
@@ -51,8 +51,9 @@ namespace WebApplication3.Controllers
             return Ok();
 
         }
-        [Route("api/Teacher")]
-        public IHttpActionResult PutTeacher(Teacher_View t)
+
+        [Route("api/Teacher/update")]
+        public IHttpActionResult PutTeacher(TeacherView t)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Invalid Data.");
@@ -73,7 +74,8 @@ namespace WebApplication3.Controllers
             }
             return Ok();
         }
-        [Route("api/Teacher/{id:int}")]
+
+        [Route("api/Teacher/delete/{id:int}")]
         public IHttpActionResult Delete(int id)
         {
             using (var db = new TeacherEntities())
