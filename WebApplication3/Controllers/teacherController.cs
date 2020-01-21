@@ -10,7 +10,7 @@ namespace WebApplication3.Controllers
 {
     public class teacherController : ApiController
     {
-        [Route("api/Teacher/info")]
+         [Route("api/Teacher/info")]
         public IHttpActionResult GetTeacher()
             {
                     IList<Teacher_View> tech = null;
@@ -31,7 +31,6 @@ namespace WebApplication3.Controllers
                 return Ok(tech);
 
             }
-
         [Route("api/Teacher/insert")]
         public IHttpActionResult PostTeacher(Teacher_View t)
             {
