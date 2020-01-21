@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebApplication3.Models
 {
-    public class TeacherView
+    public class Teacher_View
     {
         public Decimal Id;
         public string Name;
